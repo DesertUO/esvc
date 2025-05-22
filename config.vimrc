@@ -6,10 +6,13 @@ set autoindent
 set splitright
 set completeopt+=preview
 
+set termguicolors
+
 call plug#begin('~/.vim/plugged')
 
 " COLORSCHEME
 Plug 'morhetz/gruvbox'
+Plug 'catppuccin/vim'
 " STATUSLINE
 Plug 'vim-airline/vim-airline'
 
@@ -66,14 +69,15 @@ Plug 'preservim/nerdtree'
 call plug#end()
 
 " Config COLORSCHEME
-colorscheme gruvbox
-set background=dark
+colorscheme catppuccin_mocha
+" colorscheme gruvbox
+" set background=dark
 
 let g:gruvbox_transparent_bg = '1'
 
 hi NORMAL ctermbg=NONE
 hi NonText ctermbg=NONE
-hi NORMAL guibg=NONE
+" hi NORMAL guibg=NONE
 
 hi vertsplit ctermbg=NONE
 
@@ -124,3 +128,19 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " Auto poput for autocompletion
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_sources = ['vsnip']
+
+" Custom commands: like :B
+" El commando es :Build
+command Build !g++ -Wall -O2 % -o %< && ./%<
+" El atajo de teclado es F5:
+nnoremap <F5> :!g++ -Wall -O2 % -o %< && ./%<
+
+
+" Airline
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+
+let g:airline_detect_modified=1
+
+let g:airline_section_b = 'Someone lover '
+let g:airline_section_y=''
